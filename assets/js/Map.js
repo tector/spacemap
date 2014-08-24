@@ -1,5 +1,6 @@
 var Map = function(stage){
     this._stage = stage;
+
 }
 
 Map.prototype.drawGrid = function(layer){
@@ -29,4 +30,41 @@ for(var y = 0;y<height;y+=50){
     }
 }
 
+}
+
+Map.prototype.drawData = function(layers){
+
+
+    this._loadData(layers);
+
+}
+Map.prototype._displayData = function(data){
+
+
+}
+Map.prototype._loadData = function(layers){
+    $.ajax({
+        url: 'assets/data/dummydata-hybrid-with-sprites.json',
+        success:function(data){
+            for(var row in data){
+
+                var dataRow = data[row];
+                var imageName = dataRow.attribs.class.replace('sprites ','');
+                var imageObj = Kinetic.Assets[imageName];
+               
+                var object = new Kinetic.Image({
+                    image:imageObj,
+                    width:259,
+                    height:259,
+                    x:500,
+                    y:500
+                });
+
+                var layer = layers[dataRow.layer];
+
+                layer.add(object);
+            }
+        },
+        dataType: 'json'
+    });
 }
