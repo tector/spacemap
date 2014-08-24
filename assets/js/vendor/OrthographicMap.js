@@ -11,6 +11,10 @@ OrthographicMap.prototype.setViewport = function(viewportHeight,viewportWidth){
     this._viewportHeight = viewportHeight;
     this._viewportWidth = viewportWidth;
 }
+OrthographicMap.prototype.setGridSize = function(tileHeight,tileWidth){
+    this._tileWidth = tileWidth;
+    this._tileHeight = tileHeight;
+}
 OrthographicMap.prototype.positionToPixel = function(posY,posX)
 {
     var left = posX * this._tileWidth;

@@ -29,6 +29,7 @@ Map.prototype.setY = function(y){
 }
 Map.prototype.setGridSize = function(size){
     this._gridSize = size;
+    this._mapHelper.setGridSize(size,size);
 }
 Map.prototype.draw = function(){
 
@@ -37,6 +38,9 @@ Map.prototype.draw = function(){
   }
   this._drawObjects();
 
+}
+Map.prototype.clear = function(){
+    this._stage.clear();
 }
 Map.prototype._drawObjects = function(){
     var offset = this._mapHelper.getCenterPosition(this._posY,this._posX);

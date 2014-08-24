@@ -16,4 +16,16 @@ $(function(){
     $(window).scroll(function(event){
        console.log(event);
     });
+    $( ".slider" ).slider({
+        range: "max",
+        min: 50,
+        max: 250,
+        step: 50,
+        value: 50,
+        slide: function( event, ui ) {
+            map.clear();
+            map.setGridSize(ui.value);
+            map.draw();
+        }
+    });
 });
