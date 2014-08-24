@@ -5,7 +5,8 @@ $(function(){
     var stage = new Kinetic.Stage({
         container: 'mapCanvas',
         width: documentWidth,
-        height: documentHeight
+        height: documentHeight,
+        draggable:true
     });
     var loader = new Kinetic.Loader(toLoad);
 

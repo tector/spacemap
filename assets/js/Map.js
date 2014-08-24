@@ -10,6 +10,7 @@ Map.prototype.drawGrid = function(layer){
 
 
 
+
 for(var y = 0;y<height;y+=50){
     for(var x = 0;x < width;x+=50){
 
@@ -51,14 +52,19 @@ Map.prototype._loadData = function(layers){
 
                 var kineticImage = new Kinetic.Image({
                     image:imageObj,
-                    x: 100,
-                    y: 100
-                });
+                    x: dataRow.x * 50,
+                    y: dataRow.y * 50,
+                    width:50,
+                    height:50
 
+                });
+                console.log( dataRow.y * 50);
                 var layer = layers[dataRow.layer];
                 layer.add(kineticImage);
 
             }
+            that._stage.setX(-60500);
+            that._stage.setY(-60500);
             for(var l in layers){
                 var layer = layers[l];
                 that._stage.add(layer);
