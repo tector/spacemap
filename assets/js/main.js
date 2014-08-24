@@ -1,17 +1,25 @@
 $(function(){
    var documentWidth = $(document).width();
-    var documentHeigth = $(document).width();
-    console.log(documentWidth);
+    var documentHeight = $(document).height();
+
     var stage = new Kinetic.Stage({
         container: 'mapCanvas',
         width: documentWidth,
-        height: documentHeigth
+        height: documentHeight
     });
 
+    var map = new Map(stage);
+    var gridLayer = new Kinetic.Layer();
+    var planetLayer = new Kinetic.Layer();
+    var asteroidsLayer = new Kinetic.Layer();
 
-    var layer1 = new Kinetic.Layer();
-    var layer2 = new Kinetic.Layer();
-    stage.addLayer(layer1);
-    stage.addLayer(layer2);
+    map.drawGrid(gridLayer);
+
+
+    stage.add(gridLayer);
+    stage.add(planetLayer);
+    stage.add(asteroidsLayer);
+
+
 
 });
