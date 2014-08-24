@@ -12,22 +12,28 @@ $(function(){
 
 
     var map = new Map(stage);
-    var gridLayer = new Kinetic.Layer();
     var layers = [];
+
+    var gridLayer = new Kinetic.Layer();
     var planetLayer = new Kinetic.Layer();
     var asteroidsLayer = new Kinetic.Layer();
 
     map.drawGrid(gridLayer);
+
     layers.push(planetLayer);
     layers.push(asteroidsLayer);
+
     loader.onComplete(function(){
         map.drawData(layers);
+
+
     });
 
 
     stage.add(gridLayer);
-    stage.add(planetLayer);
-    stage.add(asteroidsLayer);
+
+
+
 
     loader.load();
 

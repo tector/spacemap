@@ -38,31 +38,30 @@ Map.prototype.drawData = function(layers){
     this._loadData(layers);
 
 }
-Map.prototype._displayData = function(data){
 
-
-}
 Map.prototype._loadData = function(layers){
+    var that = this;
     $.ajax({
         url: 'assets/data/dummydata-hybrid-with-sprites.json',
         success:function(data){
             for(var row in data){
-
                 var dataRow = data[row];
                 var imageName = dataRow.attribs.class.replace('sprites ','');
                 var imageObj = Kinetic.Assets[imageName];
-               
-                var object = new Kinetic.Image({
+
+                var kineticImage = new Kinetic.Image({
                     image:imageObj,
-                    width:259,
-                    height:259,
-                    x:500,
-                    y:500
+                    x: 100,
+                    y: 100
                 });
 
                 var layer = layers[dataRow.layer];
+                layer.add(kineticImage);
 
-                layer.add(object);
+            }
+            for(var l in layers){
+                var layer = layers[l];
+                that._stage.add(layer);
             }
         },
         dataType: 'json'
